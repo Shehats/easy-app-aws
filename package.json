@@ -1,0 +1,19 @@
+{
+  "name": "easy-app-aws",
+  "version": "0.0.1",
+  "description": "An opionated approach to aws severless node js applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shehats/easy-app-aws.git"
+  },
+  "author": "Saleh Shehata",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shehats/easy-app-aws/issues"
+  },
+  "homepage": "https://github.com/Shehats/easy-app-aws#readme"
+}
