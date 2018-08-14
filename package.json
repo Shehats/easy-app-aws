@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Shehats/easy-app-aws/issues"
   },
-  "homepage": "https://github.com/Shehats/easy-app-aws#readme"
+  "homepage": "https://github.com/Shehats/easy-app-aws#readme",
+  "dependencies": {
+    "aws-sdk": "^2.293.0"
+  }
 }
