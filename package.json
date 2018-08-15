@@ -17,6 +17,15 @@
   },
   "homepage": "https://github.com/Shehats/easy-app-aws#readme",
   "dependencies": {
-    "aws-sdk": "^2.293.0"
+    "aws-sdk": "^2.293.0",
+    "claudia": "^5.1.1",
+    "claudia-api-builder": "^4.1.1",
+    "dynamodb": "^1.1.2",
+    "easy-app-js": "0.0.2",
+    "easy-injectionjs": "^0.1.42",
+    "joi": "^13.6.0",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.2.2",
+    "typeorm": "^0.2.7"
   }
 }
