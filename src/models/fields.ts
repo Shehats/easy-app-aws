@@ -1,24 +1,34 @@
 import { Easily, is } from 'easy-injectionjs';
-import 'reflect-metadata';
-import { createType } from './helpers';
+import { createType, createField } from './helpers';
 
-export interface Field {
-  type: any,
-  name: string,
-  params?: string | any | any[]
+export const column = (params?: string | any | any[]) => 
+function (target: Object, key: string) {
+  createField(target, key, params);
 }
 
-export const column = (params?: string | any | any[]) => function (target: Object, key: string) {
-  let field: Field = {
-    type: createType(<string>params,Reflect.getMetadata("design:type", target, key).name),
-    name: key,
-    params: params
-  }
-  let stack = <Field[]>is(target.constructor.name+'_Fields') || [];
-  stack.push(field)
-  Easily(target.constructor.name+'_Fields', stack);
+export const id = (params?: string | any | any[]) => 
+function (target: Object, key: string) {
+  Easily('hashkey_'+target.constructor.name, key);
+  createField(target, key, params);
 }
 
-export const id = (params?: string | any | any[]) => function (target: Object, key: string) {}
+export const key = (params?: string | any | any[]) => 
+function (target: Object, key: string) {
+  Easily('rangeKey_'+target.constructor.name, key);
+  createField(target, key, params);
+}
 
-export const key = (params?: string | any | any[]) => function (target: Object, key: string) {}
+export const passwordField = (params?: string | any | any[]) => 
+function (target: Object, key: string) {
+  Easily('Password_'+target.constructor.name, key);
+  createField(target, key, params);
+}
+
+export function ignore (target: Object, key: string) {
+  Easily('Ignore_'+target.constructor.name, key);
+}
+
+class Data {
+  @column()
+  private arr: string[];
+}
