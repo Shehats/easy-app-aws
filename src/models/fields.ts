@@ -27,8 +27,3 @@ function (target: Object, key: string) {
 export function ignore (target: Object, key: string) {
   Easily('Ignore_'+target.constructor.name, key);
 }
-
-class Data {
-  @column()
-  private arr: string[];
-}

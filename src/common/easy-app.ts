@@ -6,8 +6,10 @@ export const EasyApp = <T extends {new(...args:any[]):{}}>
   let app = new App(config);
   Easily('App', app.App)
   let controllers = <any[]>is('Controller_Stack');
-  while (controllers) {
+  while (controllers && controllers.length > 0) {
     let curn = controllers.pop();
     new curn.controller(app.App, curn.entity, curn.routes, curn.target);
   }
 }
+
+export const getApp = () => (<any>is('App'));

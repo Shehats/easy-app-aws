@@ -19,7 +19,6 @@ export const createType = (config: string, type: string) =>
 
 export const createField = (target: Object,
   key: string,params?: string | any | any[]) => {
-  console.log(Reflect.getMetadata("design:type", target, key).name)
   let field: Field = {
     type: createType(<string>params,Reflect.getMetadata("design:type", target, key).name),
     name: key,
@@ -36,9 +35,9 @@ export const createSchema = <T extends {new(...args: any[]):{}}> (target: T) => 
   let stack = <Field[]>is(target.name+'_Fields');
   let schema = { hashKey: hashKey, schema: {} };
   schema['rangeKey'] = rangeKey;
-  while (stack) {
+  while (stack && stack.length > 0) {
     let x = stack.pop();
     schema['schema'][x.name] = x.type;
   }
-  dynamo.define(target.name, schema);
+  return dynamo.define(target.name, schema);
 }
